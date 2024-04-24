@@ -8,7 +8,7 @@ class Program
         string status;
         do {
             Random randomGenerator = new Random();
-            int magic_number = randomGenerator.Next(1, 100);
+            int magic_number = randomGenerator.Next(1, 101);
         
             int attempt = 0;
             int guess_number;
@@ -34,7 +34,7 @@ class Program
         
             Console.Write("Continue? (yes / no) ");
             status = Console.ReadLine();
-            
+
         } while (status == "yes");
     }
 }
