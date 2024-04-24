@@ -27,7 +27,20 @@ class Program
             grade = "F";
         }
 
-        Console.WriteLine($"Your grade: {grade}");
+        string sign = "";
+        int last_digit = score_int % 10;
+        if (grade != "F") {
+            
+            if (last_digit >= 7 && grade != "A") {
+                sign = "+";
+            }
+            else if (last_digit < 3) {
+                sign = "-";
+            }
+        }
+        
+
+        Console.WriteLine($"Your grade: {grade}{sign}");
 
         if (score_int >= 70) {
             Console.WriteLine("Congratulations! You have passed the class.");
