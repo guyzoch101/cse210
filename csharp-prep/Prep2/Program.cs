@@ -29,8 +29,11 @@ class Program
 
         string sign = "";
         int last_digit = score_int % 10;
+
+        /* no signs for grade F */
         if (grade != "F") {
             
+            /* no A+ */
             if (last_digit >= 7 && grade != "A") {
                 sign = "+";
             }
