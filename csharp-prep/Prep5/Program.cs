@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 class Program
 {
@@ -13,10 +14,29 @@ class Program
         return name;
     }
 
+    static int PromptUserNumber() {
+        Console.Write("Please enter your favourite number: ");
+        string input = Console.ReadLine();
+
+        int fav_number = int.Parse(input);
+        
+        return fav_number;
+    }
+
+    static int SquareNumber(int number) {
+        int squared = number * number;
+
+        return squared;
+    }
+
     static void Main(string[] args)
     {
         DisplayWelcome();
 
         PromptUserName();
+
+        int user_num = PromptUserNumber();
+
+        SquareNumber(user_num);
     }
 }
