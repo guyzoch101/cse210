@@ -15,7 +15,9 @@ class Program
             string input = Console.ReadLine();
 
             num = int.Parse(input);
-            numbers.Add(num);
+            if (num != 0) {
+                numbers.Add(num);
+            }
         } while (num != 0);
 
         int sum = 0;
