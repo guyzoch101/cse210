@@ -33,8 +33,16 @@ class Program
             }
         }
 
+        int min_positive = 10000;
+        foreach (int number in numbers) {
+            if (min_positive > number && number > 0) {
+                min_positive = number;
+            }
+        }
+
         Console.WriteLine($"The sum is {sum}");
         Console.WriteLine($"The average is {average}");
         Console.WriteLine($"The largest number is {max}");
+        Console.WriteLine($"The smallest positive number is: {min_positive}");
     }
 }
