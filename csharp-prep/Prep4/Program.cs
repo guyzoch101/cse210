@@ -26,7 +26,7 @@ class Program
         }
 
         int terms = numbers.Count;
-        float average = sum / terms;
+        float average = ((float) sum) / terms;
 
         int max = 0;
         foreach (int number in numbers) {
