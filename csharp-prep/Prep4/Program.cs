@@ -44,5 +44,11 @@ class Program
         Console.WriteLine($"The average is {average}");
         Console.WriteLine($"The largest number is {max}");
         Console.WriteLine($"The smallest positive number is: {min_positive}");
+
+        numbers.Sort();
+        Console.WriteLine("Sorted list:");
+        foreach (int number in numbers) {
+            Console.WriteLine(number);
+        }
     }
 }
