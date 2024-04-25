@@ -29,14 +29,20 @@ class Program
         return squared;
     }
 
+    static void DisplayResult(string name, int squared_number) {
+        Console.WriteLine($"{name}, the square of your number is {squared_number}");
+    }
+
     static void Main(string[] args)
     {
         DisplayWelcome();
 
-        PromptUserName();
+        string name = PromptUserName();
 
         int user_num = PromptUserNumber();
 
-        SquareNumber(user_num);
+        int squared_number = SquareNumber(user_num);
+
+        DisplayResult(name, squared_number);
     }
 }
