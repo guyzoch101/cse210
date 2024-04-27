@@ -16,5 +16,20 @@ class Program
         job1._endYear = 2022;
 
         job1.Display();
+
+        // creating a new job card with the class
+        Job job2 = new Job();
+
+        // initializing the variables
+        job2._jobTitle = "System Developer";
+        job2._company = "Apple";
+        job2._startYear = 2022;
+        job2._endYear = 2023;
+
+        job2.Display();
+
+        // displaying the company names
+        Console.WriteLine(job1._company);
+        Console.WriteLine(job2._company);
     }
 }
