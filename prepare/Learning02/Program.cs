@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 
@@ -15,8 +16,6 @@ class Program
         job1._startYear = 2019;
         job1._endYear = 2022;
 
-        job1.DisplayJobDetails();
-
         // creating a new job card with the class
         Job job2 = new Job();
 
@@ -26,10 +25,11 @@ class Program
         job2._startYear = 2022;
         job2._endYear = 2023;
 
-        job2.DisplayJobDetails();
+        Resume myResume = new Resume();
+        myResume._name = "Tristan Wong";
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
 
-        // displaying the company names
-        Console.WriteLine(job1._company);
-        Console.WriteLine(job2._company);
+        myResume.Display();
     }
 }
