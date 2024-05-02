@@ -1,9 +1,13 @@
 Prompts:
-	Who was the most interesting person I interacted with today?
-	What was the best part of my day?
+	A memorable event or moment.
+	An emotional moment.
+	Had any tasty food today?
+	If you could change one thing happened today, what would it be?
+	Any new goals set?
 	How did I see the hand of the Lord in my life today?
-	What was the strongest emotion I felt today?
-	If I had one thing I could do over today, what would it be?
+	A scripture or quote to remember.
+	What was the best part of my day?
+	Tell me anything!
 
 Menu:
 	1. New Entry
@@ -16,3 +20,10 @@ General Flow:
 	1. Obtain current date time
 	2. Prompt new entry
 	3. Save to file + Prompt file name
+
+Classes:
+They should be holding the information for each entry
+Displaying the entries
+Another class should be able to add things into a text or csv file and obtain information from it
+Prompts generator
+
