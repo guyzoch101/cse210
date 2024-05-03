@@ -24,6 +24,17 @@ public class Journal {
 
         foreach (string line in lines) {
             string[] parts = line.Split("~");
+
+            Entry entryLoading = new Entry();
+            int dateINDEX = 0;
+            int promptTextINDEX = 1;
+            int entryTextINDEX = 2;
+
+            entryLoading._date = parts[dateINDEX];
+            entryLoading._promptText = parts[promptTextINDEX];
+            entryLoading._entryText = parts[entryTextINDEX];
+
+            AddEntry(entryLoading);
         }
     }
 }
