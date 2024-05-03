@@ -9,7 +9,9 @@ class Program
     {
         Console.WriteLine("Journal Program");
         string choice;
+        // new journal outside of the loop, since only 1 journal is needed
         Journal mainJournal = new Journal();
+        PromptGenerator randomPrompt = new PromptGenerator();
 
         do {
             Console.WriteLine("Menu");
@@ -24,14 +26,13 @@ class Program
             if (choice == "1") {
                 // new entry
                 Entry newEntry = new Entry();
-                PromptGenerator newPrompt = new PromptGenerator();
 
                 // obtain current date
                 DateTime theCurrentTime = DateTime.Now;
                 newEntry._date = theCurrentTime.ToShortDateString();
 
                 // prompt text
-                newEntry._promptText = newPrompt.GetRandomPrompt();
+                newEntry._promptText = randomPrompt.GetRandomPrompt();
                 Console.WriteLine(newEntry._promptText);
 
                 // entry text
