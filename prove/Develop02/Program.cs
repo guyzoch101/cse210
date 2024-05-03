@@ -55,13 +55,19 @@ class Program
             }
 
             else if (choice == "3") {
-                Console.Write("Enter the file you would like to load: ");
+                Console.WriteLine("Enter the file name without .txt");
+                Console.Write("File name to be loaded: ");
                 string filename = Console.ReadLine();
+
+                mainJournal.LoadFromFile(filename);
             }
 
             else if (choice == "4") {
+                Console.WriteLine("Enter the file name without .txt");
                 Console.Write("Name for file of entries entered: ");
                 string filename = Console.ReadLine();
+
+                mainJournal.SaveToFile(filename);
             }
 
             else if (choice == "5") {
