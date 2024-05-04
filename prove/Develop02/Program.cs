@@ -7,6 +7,8 @@ using System.IO;
 // I added a random scirpture generator, which displays a random scirpture in the list
 // Its properties are similar to the prompt generator
 
+// A feature added which will obtain the day of the week and store together with the date of entry entered
+
 class Program
 {
     static void Main(string[] args)
@@ -32,9 +34,10 @@ class Program
                 // new entry
                 Entry newEntry = new Entry();
 
-                // obtain current date
+                // obtain current date and the day of the week
                 DateTime theCurrentTime = DateTime.Now;
-                newEntry._date = theCurrentTime.ToShortDateString();
+                DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+                newEntry._date = $"{theCurrentTime.ToShortDateString()} {currentDay}";
 
                 // prompt text
                 newEntry._promptText = randomPrompt.GetRandomPrompt();
