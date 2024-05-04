@@ -12,6 +12,7 @@ class Program
         // new journal outside of the loop, since only 1 journal is needed
         Journal mainJournal = new Journal();
         PromptGenerator randomPrompt = new PromptGenerator();
+        ScriptureGenerator randomScirpture = new ScriptureGenerator();
 
         do {
             Console.WriteLine("Menu");
@@ -77,6 +78,11 @@ class Program
             }
 
             else if (choice == "5") { // Exit
+                // Displays a random verse from the Book of Mormon
+                string randomVerse = randomScirpture.GetRandomScripture();
+                randomScirpture.DisplayScripture(randomVerse);
+                Console.WriteLine("");
+
                 Console.WriteLine("Exit...");
                 Console.WriteLine("See you!");
             }
