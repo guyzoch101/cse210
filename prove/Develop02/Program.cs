@@ -23,7 +23,7 @@ class Program
             Console.Write("Please select one operatation: ");
             choice = Console.ReadLine();
 
-            if (choice == "1") {
+            if (choice == "1") { // New entry
                 // new entry
                 Entry newEntry = new Entry();
 
@@ -41,9 +41,10 @@ class Program
 
                 // adding entry to the list under class Journal
                 mainJournal.AddEntry(newEntry);
+
             }
 
-            else if (choice == "2") {
+            else if (choice == "2") { // Display entries
                 // empty list case handled with an if-else statement
                 if (mainJournal._entries.Count != 0) {
                     mainJournal.DisplayAll();
@@ -53,15 +54,21 @@ class Program
                 }
             }
 
-            else if (choice == "3") {
+            else if (choice == "3") { // Load previous entries from saved text file to a list in class Journal
+                // non-existent filename case handled
                 Console.WriteLine("Enter the file name without .txt");
                 Console.Write("File name to be loaded: ");
                 string filename = Console.ReadLine();
-
-                mainJournal.LoadFromFile(filename);
+                
+                if (File.Exists(filename)) {
+                    mainJournal.LoadFromFile(filename);
+                }
+                else {
+                    Console.WriteLine($"File  {filename}  does not exist in current folder.");
+                }
             }
 
-            else if (choice == "4") {
+            else if (choice == "4") { // Save currently entered entries into a text file
                 Console.WriteLine("Enter the file name without .txt");
                 Console.Write("Name for file of entries entered: ");
                 string filename = Console.ReadLine();
@@ -69,7 +76,7 @@ class Program
                 mainJournal.SaveToFile(filename);
             }
 
-            else if (choice == "5") {
+            else if (choice == "5") { // Exit
                 Console.WriteLine("Exit...");
                 Console.WriteLine("See you!");
             }
