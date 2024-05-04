@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Journal Program");
+        Console.WriteLine("Tristan's Journal");
         string choice;
         // new journal outside of the loop, since only 1 journal is needed
         Journal mainJournal = new Journal();
@@ -41,8 +41,6 @@ class Program
 
                 // adding entry to the list under class Journal
                 mainJournal.AddEntry(newEntry);
-
-                // mainJournal.DisplayAll();
             }
 
             else if (choice == "2") {
@@ -73,13 +71,12 @@ class Program
 
             else if (choice == "5") {
                 Console.WriteLine("Exit...");
+                Console.WriteLine("See you!");
             }
 
             else {
-                Console.WriteLine("Invalid Choice");
+                Console.WriteLine("Invalid Choice. Please enter numbers 1 to 5.");
             }
-
-            Console.WriteLine();
 
         } while (choice != "5");
     }
