@@ -3,6 +3,10 @@ using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.IO;
 
+// Sometimes we feel down and all we need is to feel the spirit, allowing Christ to heal us,
+// I added a random scirpture generator, which displays a random scirpture in the list
+// Its properties are similar to the prompt generator
+
 class Program
 {
     static void Main(string[] args)
