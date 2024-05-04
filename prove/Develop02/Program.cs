@@ -68,7 +68,7 @@ class Program
                 Console.Write("File name to be loaded: ");
                 string filename = Console.ReadLine();
                 
-                if (File.Exists(filename)) {
+                if (File.Exists($"{filename}.txt")) {
                     mainJournal.LoadFromFile(filename);
                 }
                 else {
