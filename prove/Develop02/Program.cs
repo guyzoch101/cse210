@@ -70,9 +70,12 @@ class Program
                 
                 if (File.Exists($"{filename}.txt")) {
                     mainJournal.LoadFromFile(filename);
+                    Console.WriteLine("Entries loaded successfully.");
+                    Console.WriteLine("");
                 }
                 else {
                     Console.WriteLine($"File  {filename}  does not exist in current folder.");
+                    Console.WriteLine("");
                 }
             }
 
@@ -82,10 +85,13 @@ class Program
                 string filename = Console.ReadLine();
 
                 mainJournal.SaveToFile(filename);
+                Console.WriteLine($"Entries saved to {filename}.txt successfully.");
+                Console.WriteLine("");
             }
 
             else if (choice == "5") { // Exit
                 // Displays a random verse from the Book of Mormon
+                Console.WriteLine("");
                 string randomVerse = randomScirpture.GetRandomScripture();
                 randomScirpture.DisplayScripture(randomVerse);
                 Console.WriteLine("");
