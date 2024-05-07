@@ -18,5 +18,10 @@ class Program
         Fraction fraction3 = new Fraction(1, 4);
         Console.WriteLine(fraction3.GetFractionString());
         Console.WriteLine(fraction3.GetDeciamlValue());
+
+        // fraction 4: a fraction
+        Fraction fraction4 = new Fraction(7, 2);
+        Console.WriteLine(fraction4.GetFractionString());
+        Console.WriteLine(fraction4.GetDeciamlValue());
     }
 }
