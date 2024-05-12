@@ -20,8 +20,19 @@ public class Scripture {
         Random random = new Random();
         int totalWords = _words.Count; // total number of words in the verse
 
+        // counts the number of words not yet been hidden
+        int wordsNotHidden = 0;
+        foreach (Word word in _words) {
+            if (!word.IsHidden()) {
+                wordsNotHidden += 1;
+            }
+        }
+
         if (numberToHide > totalWords) {
             numberToHide = totalWords; // limits the numberToHide
+        }
+        else if (numberToHide > wordsNotHidden) {
+            numberToHide = wordsNotHidden; // limits the numberToHide
         }
 
         int wordsHidden = 0; // number of words hidden counter
