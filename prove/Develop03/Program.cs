@@ -25,7 +25,7 @@ class Program
         }
         else if (selector == 2) {
             scriptureInfo = new Reference("1 Nephi", 3, 7);
-            verseContent = "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I knwo that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth";
+            verseContent = "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I knwo that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth.";
             scripture = new Scripture(scriptureInfo, verseContent);
         }
         else {
@@ -37,10 +37,9 @@ class Program
         // displaying the scripture in full initially
         Console.WriteLine("Original Scripture:");
         Console.WriteLine($"{scriptureInfo.GetDisplayText()}  {scripture.GetDisplayText()}");
-        Console.ReadLine();
+        Console.WriteLine("");
 
         while (!scripture.IsCompletelyHidden()) {
-            Console.WriteLine("");
             Console.WriteLine("Press Enter to hide more words, or type 'quit' to exit:");
             string input = Console.ReadLine();
             Console.Clear();
@@ -54,6 +53,7 @@ class Program
             int hideWordsInteger = random.Next(5) + 1; // randomly generates an integer between 1 to 5
             scripture.HideRandomWords(hideWordsInteger);
             Console.WriteLine($"{scriptureInfo.GetDisplayText()}  {scripture.GetDisplayText()}");
+            Console.WriteLine("");
         } // exits the loop when all words are hidden
 
         Console.WriteLine("All words are hidden. Press any key to exit.");
