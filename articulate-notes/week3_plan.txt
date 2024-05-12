@@ -1,0 +1,27 @@
+Classes:
+
+SCRIPTURE
+	Reference _reference
+	List<Word> _words
+
+Constructor: Reference Reference; string text -> keeps track of both the reference and the text of the scripture. Can hide words and get the rendered display of the text
+
+HideRandomWords()
+GetDisplayText()
+IsCompletelyHidden()
+
+WORD
+	string _text
+	bool _isHidden
+
+Constructor: string text -> keeps track of a single word and whether it is shown or hidden
+Hide(); Show() -> check if a word is hidden
+IsHidden()
+GetDisplayText()
+
+REFERENCE
+	string _text
+	bool _isHidden
+
+Constructor: string book; int chapter; int startVerse; int endVerse (or int verse)
+GetDisplayText()
