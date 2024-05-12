@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+// 2 features have added above the core requirements
+// 4 different scriptures can be ran by the scripture memorizer, with a random integer generator to select which scripture will be used
+// a random integer generator is also used to generate the number of words to be hidden
+// also, code has been added to check if the number of words to be hidden is larger than the words shown on the console, this prevents bugs when there are only a few words on the console
 class Program
 {
     static void Main(string[] args)
