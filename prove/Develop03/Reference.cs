@@ -10,7 +10,7 @@ public class Reference {
         _book = book;
         _chapter = chapter;
         _verse = verse;
-        _endVerse = 0;
+        _endVerse = 0; // setting _endVerse as 0 since only 1 verse is provided
     }
 
     public Reference(string book, int chapter, int startVerse, int endVerse) {
@@ -21,13 +21,15 @@ public class Reference {
     }
 
     public string GetDisplayText() {
-        if (_endVerse == 0) {
-            string display = $"{_book} {_chapter}:{_verse}";
-            return display;
+        string display;
+
+        if (_endVerse == 0) { // case for only 1 verse
+            display = $"{_book} {_chapter}:{_verse}";
         }
-        else {
-            string display = $"{_book} {_chapter}:{_verse}-{_endVerse}";
-            return display;
+        else { // other cases: verse range
+            display = $"{_book} {_chapter}:{_verse}-{_endVerse}";
         }
+
+        return display;
     }
 }
