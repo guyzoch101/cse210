@@ -1,0 +1,19 @@
+Class
+Activity
+	Name of activity
+	Description
+	Starting message
+	Duration
+	Ending message
+
+Breathing Activity : Activity
+	Status: breathe in and breathe out
+	Loader: countdown
+Reflecting Activity : Activity
+	Prompt
+	Reflecting question
+	Pauser
+Listing Activity : Activity
+	Prompt
+	Countdown
+	Number of items entered
