@@ -2,7 +2,7 @@ public class ReflectingActivity : Activity {
     List<string> _prompts = new List<string>();
     List<string> _questions = new List<string>();
 
-    public ReflectingActivity() : base() {
+    public ReflectingActivity() : {
 
     }
 
@@ -23,6 +23,6 @@ public class ReflectingActivity : Activity {
     }
 
     public void DisplayQuestions() {
-        
+
     }
 }
