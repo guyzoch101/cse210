@@ -13,10 +13,10 @@ public class ListingActivity : Activity {
     public void Run() {
         DisplayStartingMessage();
 
-        GetRandomPrompt();
-        ShowSpinner(10);
-        Console.WriteLine();
-        Console.WriteLine("You may list the items now.");
+        string randomPrompt = GetRandomPrompt();
+        Console.WriteLine(randomPrompt);
+        Console.Write("You may start listing items in... "); // the counter will appear at the 34th position
+        ShowCountDown(10, 34); // parameter 34 is for clearing the counter (number only)
         string input;
 
         DateTime startTime = DateTime.Now;
@@ -24,17 +24,22 @@ public class ListingActivity : Activity {
 
         do {
             input = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(input)) {
+            if (!string.IsNullOrWhiteSpace(input)) { // adds input to list and count + 1 to record input
                 _inputs.Add(input);
+                _count += 1;
             }
-
-            _count += 1;
         } while (DateTime.Now < endTime);
+
+        Console.WriteLine($"You have entered a total of {_count} items. ");
+
+        SaveInputsToFile(randomPrompt);
+        Console.WriteLine("Your responses have been saved in ListingActivityResponses.txt");
+        Console.WriteLine();
 
         DisplayEndingMessage();
     }
 
-    public void GetRandomPrompt() {
+    public string GetRandomPrompt() {
         _prompts.Add("Who are people that you appreciate?");
         _prompts.Add("What are personal strengths of yours?");
         _prompts.Add("Who are people that you have helped this week?");
@@ -47,10 +52,17 @@ public class ListingActivity : Activity {
         int randomIndex = random.Next(_prompts.Count);
         string randomPrompt = _prompts[randomIndex];
 
-        Console.WriteLine(randomPrompt);
+        return randomPrompt;
     }
 
-    public List<String> GetListFromUser() {
-        return _prompts;
+    public void SaveInputsToFile(string promptUsed) {
+        using(StreamWriter inputsFile = new StreamWriter($"ListingActivityResponses.txt")) {
+            inputsFile.WriteLine(promptUsed); // writes the prompt question as the 1st line
+            inputsFile.WriteLine();
+
+            foreach (string input in _inputs) {
+            inputsFile.WriteLine(input);
+            }
+        }
     }
 }
