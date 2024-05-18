@@ -82,14 +82,14 @@ public class Activity {
     }
 
     public void SaveToFile() {
-        if (!File.Exists("ActivitiesLog.txt")) {
+        if (!File.Exists("ActivitiesLog.txt")) { // first time adding 
             using(StreamWriter activitiesFile = new StreamWriter("ActivitiesLog.txt")) {
                 DateTime dateTimeNow = DateTime.Now;
-                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration}");
+                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration} seconds");
             }
         }
         else {
-            string[] lines = System.IO.File.ReadAllLines("ActivitesLog.txt");
+            string[] lines = System.IO.File.ReadAllLines("ActivitiesLog.txt");
 
             foreach (string line in lines) {
                 string[] parts = line.Split("~");
@@ -100,15 +100,14 @@ public class Activity {
 
                 _activitiesLogLoading.Add($"{_dateTime}~{_activityName}~{_durationString}");
             }
-
             
-            using(StreamWriter activitiesFile = new StreamWriter("Activities.txt")) {
+            using(StreamWriter activitiesFile = new StreamWriter("ActivitiesLog.txt")) {
                 foreach (string activity in _activitiesLogLoading) {
                     activitiesFile.WriteLine(activity);
                 }
 
                 DateTime dateTimeNow = DateTime.Now;
-                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration}");
+                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration} seconds");
             }        
         }
     }
