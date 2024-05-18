@@ -10,7 +10,7 @@ public class Activity {
     }
 
     public void DisplayStartingMessage() {
-        // Console.Clear();
+        Console.Clear();
         Console.WriteLine($"Welcome to the {_name}");
         Console.WriteLine(_description);
         Console.WriteLine();
@@ -27,7 +27,7 @@ public class Activity {
         Console.WriteLine("Well done!!");
         Console.WriteLine($"You have completed the {_name} for a duration of {_duration} seconds.");
         ShowSpinner(5);
-        // Console.Clear();
+        Console.Clear();
     }
 
     public void ShowSpinner(int seconds) {
