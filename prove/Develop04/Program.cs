@@ -4,15 +4,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Mindfulness Activities");
         string choice;
 
         do {
-            Console.WriteLine("Menu");
-            Console.WriteLine("1. Breathing Activity");
-            Console.WriteLine("2. Listing Activity");
-            Console.WriteLine("3. Reflecting Activity");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("Menu : Mindfulness Activities");
+            Console.WriteLine("     1. Breathing Activity");
+            Console.WriteLine("     2. Listing Activity");
+            Console.WriteLine("     3. Reflecting Activity");
+            Console.WriteLine("     4. Exit");
             Console.Write("Please enter your choice: ");
             choice = Console.ReadLine();
             Console.WriteLine("");

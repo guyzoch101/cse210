@@ -40,7 +40,7 @@ public class ReflectingActivity : Activity {
         // generate a random index within the range of the list's indices
         int randomIndex = random.Next(_prompts.Count);
 
-        if (generatedNumbers.Count == 4) { // 4 items in the list means that all prompts have been used once
+        if (generatedNumbers.Count == _prompts.Count) { // 4 items in the list means that all prompts have been used once
             generatedNumbers.Clear(); // start the process all over
         }
 
@@ -53,6 +53,7 @@ public class ReflectingActivity : Activity {
     }
 
     public string GetRandomQuestion() {
+        string randomQuestion = "";
         _questions.Add("Why was this experience meaningful to you?");
         _questions.Add("Have you ever done anything like this before?");
         _questions.Add("How did you get started?");
@@ -64,10 +65,20 @@ public class ReflectingActivity : Activity {
         _questions.Add("How can you keep this experience in mind in the future?");
         
         Random random = new Random();
+        List<int> generatedNumbers = new List<int>(); // a list to keep track which question has been used
 
         // generate a random index within the range of the list's indices
-        int randomIndex = random.Next(_questions.Count);
-        string randomQuestion = _questions[randomIndex];
+        int randomIndex = random.Next(_prompts.Count);
+
+        if (generatedNumbers.Count == _questions.Count) { // 9 items in the list means that all questions have been used once
+            generatedNumbers.Clear(); // start the process all over
+        }
+
+        // generate a random index within the range of the list's indices
+        if (!generatedNumbers.Contains(randomIndex)) { // will not return a repeated question
+            randomQuestion = _prompts[randomIndex];
+            generatedNumbers.Add(randomIndex);
+        }
 
         return randomQuestion;
     }
