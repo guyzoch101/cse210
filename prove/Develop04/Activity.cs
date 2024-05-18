@@ -6,7 +6,7 @@ public class Activity {
     public Activity() {
         _name = "";
         _description = "";
-        _duration = 0;
+        _duration = 0; // user input
     }
 
     public void DisplayStartingMessage() {
