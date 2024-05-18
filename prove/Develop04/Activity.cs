@@ -13,7 +13,7 @@ public class Activity {
         // Console.Clear();
         Console.WriteLine($"Welcome to the {_name}");
         Console.WriteLine(_description);
-        Console.WriteLine("");
+        Console.WriteLine();
 
         // prompts for user input for the duration of an activity
         Console.Write("Enter the duration of the activity: ");
@@ -65,6 +65,8 @@ public class Activity {
                 Thread.Sleep(1000); // does not stop for 1 second when it reaches 0
                 int currentLineCursor = Console.CursorTop;
                 Console.SetCursorPosition(position, currentLineCursor - 1);
+                Console.Write("  "); // clears 2 characters
+                Console.SetCursorPosition(position, currentLineCursor - 1); // reset to the nth position from the left of the console
 
                 // collects the current cursor position on the console
                 // position -> the nth position from the left of the console
