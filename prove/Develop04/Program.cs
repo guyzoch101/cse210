@@ -1,5 +1,10 @@
 using System;
 
+// for ListingActivity, all the user's responses will be saved in a textfile called ListingActivityResponses.txt
+// in ReflectingActivity, 2 new lists are declared to keep track of the number generated for the randomPrompt and randomQuestions
+// to prevent generating a duplicated prompt or question
+
+
 class Program
 {
     static void Main(string[] args)
@@ -14,7 +19,7 @@ class Program
             Console.WriteLine("     4. Exit");
             Console.Write("Please enter your choice: ");
             choice = Console.ReadLine();
-            Console.WriteLine("");
+            Console.WriteLine();
 
             if (choice == "1") {
                 BreathingActivity breathingActivity = new BreathingActivity();
@@ -32,6 +37,8 @@ class Program
             }
 
             else if (choice == "4") {
+                Activity activity = new Activity();
+                activity.ShowSpinner(5);
                 Console.WriteLine("Exiting...");
             }
             

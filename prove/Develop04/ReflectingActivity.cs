@@ -1,6 +1,8 @@
 public class ReflectingActivity : Activity {
-    List<string> _prompts = new List<string>();
-    List<string> _questions = new List<string>();
+    private List<string> _prompts = new List<string>();
+    private List<string> _questions = new List<string>();
+    private List<int> _generatedNumbersPrompt = new List<int>(); // a list to keep track which prompt has been used
+    private List<int> _generatedNumbersQuestion = new List<int>(); // a list to keep track which question has been used
 
     public ReflectingActivity() {
         _name = "Reflecting Activity";
@@ -35,18 +37,17 @@ public class ReflectingActivity : Activity {
         _prompts.Add("Think of a time when you did something truly selfless.");
 
         Random random = new Random();
-        List<int> generatedNumbers = new List<int>(); // a list to keep track which prompt has been used
 
         // generate a random index within the range of the list's indices
         int randomIndex = random.Next(_prompts.Count);
 
-        if (generatedNumbers.Count == _prompts.Count) { // 4 items in the list means that all prompts have been used once
-            generatedNumbers.Clear(); // start the process all over
+        if (_generatedNumbersPrompt.Count == _prompts.Count) { // 4 items in the list means that all prompts have been used once
+            _generatedNumbersPrompt.Clear(); // start the process all over
         }
 
-        if (!generatedNumbers.Contains(randomIndex)) { // will not return a repeated prompt
+        if (!_generatedNumbersPrompt.Contains(randomIndex)) { // will not return a repeated prompt
             randomPrompt = _prompts[randomIndex];
-            generatedNumbers.Add(randomIndex);
+            _generatedNumbersPrompt.Add(randomIndex);
         }
 
         return randomPrompt;
@@ -65,19 +66,18 @@ public class ReflectingActivity : Activity {
         _questions.Add("How can you keep this experience in mind in the future?");
         
         Random random = new Random();
-        List<int> generatedNumbers = new List<int>(); // a list to keep track which question has been used
 
         // generate a random index within the range of the list's indices
-        int randomIndex = random.Next(_prompts.Count);
+        int randomIndex = random.Next(_questions.Count);
 
-        if (generatedNumbers.Count == _questions.Count) { // 9 items in the list means that all questions have been used once
-            generatedNumbers.Clear(); // start the process all over
+        if (_generatedNumbersQuestion.Count == _questions.Count) { // 9 items in the list means that all questions have been used once
+            _generatedNumbersQuestion.Clear(); // start the process all over
         }
 
         // generate a random index within the range of the list's indices
-        if (!generatedNumbers.Contains(randomIndex)) { // will not return a repeated question
-            randomQuestion = _prompts[randomIndex];
-            generatedNumbers.Add(randomIndex);
+        if (!_generatedNumbersQuestion.Contains(randomIndex)) { // will not return a repeated question
+            randomQuestion = _questions[randomIndex];
+            _generatedNumbersQuestion.Add(randomIndex);
         }
 
         return randomQuestion;

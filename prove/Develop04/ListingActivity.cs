@@ -1,7 +1,8 @@
 public class ListingActivity : Activity {
     private int _count;
-    List<string> _prompts = new List<string>();
-    List<string> _inputs = new List<string>();
+    private List<string> _prompts = new List<string>();
+    private List<string> _inputs = new List<string>();
+    private List<int> _generatedNumbersPrompt = new List<int>();
 
     public ListingActivity() {
         _name = "Listing Activity";
@@ -40,6 +41,7 @@ public class ListingActivity : Activity {
     }
 
     public string GetRandomPrompt() {
+        string randomPrompt = "";
         _prompts.Add("Who are people that you appreciate?");
         _prompts.Add("What are personal strengths of yours?");
         _prompts.Add("Who are people that you have helped this week?");
@@ -50,7 +52,15 @@ public class ListingActivity : Activity {
 
         // generate a random index within the range of the list's indices
         int randomIndex = random.Next(_prompts.Count);
-        string randomPrompt = _prompts[randomIndex];
+
+        if (_generatedNumbersPrompt.Count == _prompts.Count) { // 4 items in the list means that all prompts have been used once
+            _generatedNumbersPrompt.Clear(); // start the process all over
+        }
+
+        if (!_generatedNumbersPrompt.Contains(randomIndex)) { // will not return a repeated prompt
+            randomPrompt = _prompts[randomIndex];
+            _generatedNumbersPrompt.Add(randomIndex);
+        }
 
         return randomPrompt;
     }
