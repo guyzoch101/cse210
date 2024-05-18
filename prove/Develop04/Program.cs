@@ -15,9 +15,11 @@ class Program
             Console.WriteLine("4. Exit");
             Console.Write("Please enter your choice: ");
             choice = Console.ReadLine();
+            Console.WriteLine("");
 
             if (choice == "1") {
-
+                BreathingActivity breatheActivity = new BreathingActivity();
+                breatheActivity.Run();
             }
             
             else if (choice == "2") {
