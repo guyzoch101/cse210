@@ -2,6 +2,10 @@ public class Activity {
     protected string _name;
     protected string _description;
     protected int _duration;
+    private List<string> _activitiesLogLoading = new List<string>();
+    private string _dateTime;
+    private string _activityName;
+    private string _durationString;
 
     public Activity() {
         _name = "";
@@ -74,6 +78,38 @@ public class Activity {
             }
             
             seconds -= 1;
+        }
+    }
+
+    public void SaveToFile() {
+        if (!File.Exists("ActivitiesLog.txt")) {
+            using(StreamWriter activitiesFile = new StreamWriter("ActivitiesLog.txt")) {
+                DateTime dateTimeNow = DateTime.Now;
+                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration}");
+            }
+        }
+        else {
+            string[] lines = System.IO.File.ReadAllLines("ActivitesLog.txt");
+
+            foreach (string line in lines) {
+                string[] parts = line.Split("~");
+
+                _dateTime = parts[0];
+                _activityName = parts[1];
+                _durationString = parts[2];
+
+                _activitiesLogLoading.Add($"{_dateTime}~{_activityName}~{_durationString}");
+            }
+
+            
+            using(StreamWriter activitiesFile = new StreamWriter("Activities.txt")) {
+                foreach (string activity in _activitiesLogLoading) {
+                    activitiesFile.WriteLine(activity);
+                }
+
+                DateTime dateTimeNow = DateTime.Now;
+                activitiesFile.WriteLine($"{dateTimeNow}~{_name}~{_duration}");
+            }        
         }
     }
 }

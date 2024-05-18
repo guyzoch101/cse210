@@ -20,6 +20,8 @@ public class BreathingActivity : Activity {
 
         } while (DateTime.Now < endTime);
 
+        SaveToFile();
+
         Console.WriteLine();
         DisplayEndingMessage();
     }
