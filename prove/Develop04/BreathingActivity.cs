@@ -8,8 +8,8 @@ public class BreathingActivity : Activity {
     public void Run() {
         DisplayStartingMessage();
 
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(_duration);
+        DateTime startTime = DateTime.Now; // sets the time now
+        DateTime endTime = startTime.AddSeconds(_duration); // sets the end time
 
         do {
             Console.Write("Breathe In... "); // the counter will be displayed at the 14th character on the console
@@ -18,7 +18,7 @@ public class BreathingActivity : Activity {
             Console.Write("Breathe Out... "); // the counter will be displayed at the 15th character on the console
             ShowCountDown(5, 15); // parameter 15 is for clearing the counter (number only)
 
-        } while (DateTime.Now <= endTime);
+        } while (DateTime.Now < endTime);
 
         Console.WriteLine();
         DisplayEndingMessage();
