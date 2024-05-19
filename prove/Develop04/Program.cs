@@ -6,7 +6,8 @@ using System.IO;
 // for ListingActivity, all the user's responses will be saved in a textfile called ListingActivityResponses.txt
 // in ReflectingActivity, 2 new lists are declared to keep track of the number generated for the randomPrompt and randomQuestions
 // to prevent generating a duplicated prompt or question
-// added a function to save an acitvity log: recording the time, activity done, and duration done
+// added a function to create an acitvity log: recording the time, activity done, and duration done
+// added another function to record the responses made by the user in the ListingActivity
 
 class Program
 {
