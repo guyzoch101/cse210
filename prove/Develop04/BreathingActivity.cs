@@ -20,7 +20,7 @@ public class BreathingActivity : Activity {
 
         } while (DateTime.Now < endTime);
 
-        SaveToFile();
+        GetActivityLog();
 
         Console.WriteLine();
         DisplayEndingMessage();

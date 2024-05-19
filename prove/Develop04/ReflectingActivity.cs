@@ -25,6 +25,8 @@ public class ReflectingActivity : Activity {
 
         } while (DateTime.Now < endTime);
 
+        GetActivityLog();
+
         Console.WriteLine();
         DisplayEndingMessage();
     }

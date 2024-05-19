@@ -37,6 +37,8 @@ public class ListingActivity : Activity {
         Console.WriteLine("Your responses have been saved in ListingActivityResponses.txt");
         Console.WriteLine();
 
+        GetActivityLog();
+
         DisplayEndingMessage();
     }
 
