@@ -62,6 +62,7 @@ public class Activity {
     }
 
     // parameter position is for the coutdown: clearing the number only after "Breathe In... " or "Breathe Out.. "
+    // or set the clearing at any position on the console
     public void ShowCountDown(int seconds, int position) {
         while (seconds >= 0) { // counts down
             Console.WriteLine(seconds);
@@ -69,7 +70,7 @@ public class Activity {
                 Thread.Sleep(1000); // does not stop for 1 second when it reaches 0
                 int currentLineCursor = Console.CursorTop;
                 Console.SetCursorPosition(position, currentLineCursor - 1);
-                Console.Write("  "); // clears 2 characters
+                Console.Write("   "); // clears 3 characters
                 Console.SetCursorPosition(position, currentLineCursor - 1); // reset to the nth position from the left of the console
 
                 // collects the current cursor position on the console
@@ -81,7 +82,7 @@ public class Activity {
         }
     }
 
-    public void SaveToFile() {
+    public void GetActivityLog() {
         if (!File.Exists("ActivitiesLog.txt")) { // first time adding 
             using(StreamWriter activitiesFile = new StreamWriter("ActivitiesLog.txt")) {
                 DateTime dateTimeNow = DateTime.Now;
