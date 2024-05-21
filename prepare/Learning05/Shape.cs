@@ -1,6 +1,4 @@
-using System.Drawing;
-
-public class Shape {
+public abstract class Shape {
     protected string _color;
 
     public Shape(string color) {
@@ -15,7 +13,5 @@ public class Shape {
         _color = color;
     }
 
-    public virtual double GetArea() {
-        return -1;
-    }
+    public abstract double GetArea(); // declare it as abstract to keep the base GetArea method empty
 }
