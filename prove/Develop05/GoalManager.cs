@@ -11,6 +11,41 @@ public class GoalManager {
         // Call:
         // CreateGoal, ListGoalDetails, SaveGoals, LoadGoals
         // RecordEvent
+
+        Console.WriteLine($"Points: "); // points
+        
+        Console.WriteLine("Main Menu");
+        Console.WriteLine("     1. Create New Goal");
+        Console.WriteLine("     2. List Goals");
+        Console.WriteLine("     3. Save Goals");
+        Console.WriteLine("     4. Load Goals");
+        Console.WriteLine("     5. Exit");
+        Console.Write("Select an option from the menu: ");
+        string choiceMenu = Console.ReadLine();
+
+        if (choiceMenu == "1") {
+            CreateGoal();
+        }
+
+        else if (choiceMenu == "2") {
+
+        }
+
+        else if (choiceMenu == "3") {
+
+        }
+
+        else if (choiceMenu == "4") {
+
+        }
+
+        else if (choiceMenu == "5") {
+            Console.WriteLine("Exiting... ");
+        }
+
+        else {
+            Console.WriteLine("Invalid input. Please try again.");
+        }
     }
 
     public void DisplayPlayerInfo() {
@@ -32,6 +67,57 @@ public class GoalManager {
         // Ask for the name, description, and points
         // Ask for more if they pick checklist goal
         // Creat the object and add to the goal list
+
+        Console.WriteLine("Types of goals available:");
+        Console.WriteLine("     1. Simple Goal");
+        Console.WriteLine("     2. Eternal Goal");
+        Console.WriteLine("     3. Checklist Goal");
+        Console.Write("Select a goal type: ");
+        string choiceCreateGoal = Console.ReadLine();
+
+        // name of the goal
+        Console.Write("Name of goal: ");
+        string name = Console.ReadLine();
+
+        // short description
+        Console.Write("Provide a short description for the goal: ");
+        string description = Console.ReadLine();
+
+        // points
+        Console.Write("Amount of points for accomplishing the goal: ");
+        string pointsString = Console.ReadLine();
+        int pointsInt = int.Parse(pointsString);
+
+        if (choiceCreateGoal == "1") { // simple goal
+            SimpleGoal simpleGoal = new SimpleGoal(name, description, pointsInt);
+
+            _goals.Add(simpleGoal);
+        }
+
+        else if (choiceCreateGoal == "2") { // eternal goal
+            EternalGoal eternalGoal = new EternalGoal(name, description, pointsInt);
+            
+            _goals.Add(eternalGoal);
+        }
+
+        else if (choiceCreateGoal == "3") { // chceklist goal
+            Console.Write("Target of the goal (no. of times to be completed): ");
+            string targetString = Console.ReadLine();
+            int targetInt = int.Parse(targetString);
+
+            Console.Write("Bonus for completing target: ");
+            string bonusString = Console.ReadLine();
+            int bonusInt = int.Parse(bonusString);
+
+            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, pointsInt, targetInt, bonusInt);
+            
+            _goals.Add(checklistGoal);
+        }
+
+        else {
+            Console.WriteLine("Invalid input. Please try again.");
+        }
+
     }
 
     public void RecordEvent() {
