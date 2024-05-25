@@ -13,9 +13,14 @@ public abstract class Goal {
 
     public abstract bool IsComeplete();
 
+    public virtual string GetGoalName() {
+        return _shortName;
+    }
+
     // return the details of a goal that could be shown in a list
     public virtual string GetDetailsString() {
-        return "details";
+        string display = $"{_shortName} ({_description})";
+        return display;
     }
 
     // provide all of the details of a goal to save to a file

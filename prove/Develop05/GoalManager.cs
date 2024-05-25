@@ -11,15 +11,15 @@ public class GoalManager {
         // Call:
         // CreateGoal, ListGoalDetails, SaveGoals, LoadGoals
         // RecordEvent
-
-        Console.WriteLine($"Points: "); // points
+        DisplayPlayerInfo();
         
         Console.WriteLine("Main Menu");
         Console.WriteLine("     1. Create New Goal");
         Console.WriteLine("     2. List Goals");
         Console.WriteLine("     3. Save Goals");
         Console.WriteLine("     4. Load Goals");
-        Console.WriteLine("     5. Exit");
+        Console.WriteLine("     5. Record Event");
+        Console.WriteLine("     6. Exit");
         Console.Write("Select an option from the menu: ");
         string choiceMenu = Console.ReadLine();
 
@@ -28,18 +28,22 @@ public class GoalManager {
         }
 
         else if (choiceMenu == "2") {
-
+            ListGoalDetails();
         }
 
         else if (choiceMenu == "3") {
-
+            SaveGoals();
         }
 
         else if (choiceMenu == "4") {
-
+            LoadGoals();
         }
 
         else if (choiceMenu == "5") {
+            RecordEvent();
+        }
+
+        else if (choiceMenu == "6") {
             Console.WriteLine("Exiting... ");
         }
 
@@ -50,16 +54,34 @@ public class GoalManager {
 
     public void DisplayPlayerInfo() {
         // Display the points
+        Console.WriteLine($"Points: {_score}"); // points
     }
 
     public void ListGoalNames() {
-        // Loop through the list of goals and display
-        // the names: _shortName
+        // Loop through the list of goals and display the names (all names from the list)
+        // _shortName
+        // Create GetGoalName function??
+
+        int counter = 1;
+
+        foreach (Goal goal in _goals) {
+            Console.WriteLine($"    {counter}. {goal.GetGoalName()}");
+
+            counter += 1;
+        }
     }
 
     public void ListGoalDetails() {
         // Loop through the list of goals and display the full details
         // GetDetailsString()
+
+        int counter = 1;
+
+        foreach (Goal goal in _goals) {
+            Console.WriteLine($"    {counter}. [ ] {goal.GetDetailsString()}"); // need update on checker
+
+            counter += 1;
+        }
     }
 
     public void CreateGoal() {
@@ -126,6 +148,18 @@ public class GoalManager {
         // Call RecordEvent on the correct goal
         // Update the score based on the points
         // Display current points
+
+        Console.WriteLine("Goals available in the system:");
+        ListGoalNames();
+
+        Console.Write("Goal accomplished: ");
+        string goalAccomplishedString = Console.ReadLine();
+        int goalAccomplishedInt = int.Parse(goalAccomplishedString);
+
+        // find the object from the list
+        // call RecordEvent() and add points
+
+        _score += _goals[goalAccomplishedInt].RecordEvent();
     }
 
     public void SaveGoals() {

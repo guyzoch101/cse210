@@ -5,12 +5,15 @@ public class SimpleGoal : Goal {
         : base(name, description, points) {
         _shortName = name;
         _description = description;
-        _points = 0;
+        _points = points;
         _isComplete = false;
     }
 
     public override int RecordEvent() {
-        return -1;
+        Console.WriteLine($"Congratulations! You have earned {_points} points.");
+        _isComplete = IsComeplete();
+
+        return _points;
     }
 
     public override bool IsComeplete() {
@@ -18,6 +21,8 @@ public class SimpleGoal : Goal {
     }
 
     public override string GetStringRepresentation() {
-        return "Simple Goal";
+        string display = $"SimpleGoal~{_shortName}~{_description}~{_points}~{_isComplete}";
+
+        return display;
     }
 }
