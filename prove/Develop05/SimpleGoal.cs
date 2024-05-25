@@ -11,13 +11,17 @@ public class SimpleGoal : Goal {
 
     public override int RecordEvent() {
         Console.WriteLine($"Congratulations! You have earned {_points} points.");
-        _isComplete = IsComeplete();
+        _isComplete = true;
 
         return _points;
     }
 
     public override bool IsComeplete() {
-        return true;
+        return _isComplete;
+    }
+
+    public void StatusLoader(bool status) {
+        _isComplete = status;
     }
 
     public override string GetStringRepresentation() {
