@@ -1,12 +1,12 @@
 public class SimpleGoal : Goal {
     private bool _isComplete;
 
-    public SimpleGoal(string name, string description, int points) 
+    public SimpleGoal(string name, string description, int points, bool status) 
         : base(name, description, points) {
         _shortName = name;
         _description = description;
         _points = points;
-        _isComplete = false;
+        _isComplete = status;
     }
 
     public override int RecordEvent() {
@@ -18,10 +18,6 @@ public class SimpleGoal : Goal {
 
     public override bool IsComeplete() {
         return _isComplete;
-    }
-
-    public void StatusLoader(bool status) {
-        _isComplete = status;
     }
 
     public override string GetStringRepresentation() {
