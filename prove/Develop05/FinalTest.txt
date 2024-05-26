@@ -1,0 +1,17 @@
+5
+4390
+SimpleGoal~Tester~Testing~10~True
+ChecklistGoal~Early bedtime~Going to bed before 12am~100~500~5~5~True
+SimpleGoal~Complete HW~Complete this week's assignments before 12am~50~True
+SimpleGoal~Taking out the rubbish~Take out the rubbish before going to bed tonight~10~True
+SimpleGoal~Finish HW~Finish this week's assignments on time~50~True
+EternalGoal~Exercise~Exercise for at least 30 mins~100
+ChecklistGoal~Early bed time~Go to bed before 12am~20~500~5~2~False
+SimpleGoal~Cooking a meal~Cook a nice meal tonight~100~False
+ChecklistGoal~Reading~Read 10 pages of a book~100~1000~3~3~True
+EternalGoal~Ministering~Ministering others by showing kindness to 1 person~20
+SimpleGoal~Finish HW~Finish this week's assignments on time~50~True
+EternalGoal~Exercise~Exercise for at least 30 mins~100
+ChecklistGoal~Early bed time~Go to bed before 12am~20~500~5~2~False
+SimpleGoal~Cooking a meal~Cook a nice meal tonight~100~True
+ChecklistGoal~Reading~Read 10 pages of a book~100~1000~3~3~True
