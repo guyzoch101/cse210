@@ -78,7 +78,11 @@ public class GoalManager {
         // etc
 
         if (_score > _level * 1000) {
-            _level += 1;
+            // _level += 1 will only level up for 1 level
+            // but loading multiple files may cause the level to rise for more than 1 in one round
+
+            // if _score = 2500 -> will return 2.5 and round down to the nearest int which is 2
+            _level = (int)Math.Floor((double)_score / 1000);
             Console.WriteLine($"Congratulations! You have levelled up to level {_level}.");
         }
     }
@@ -274,7 +278,7 @@ public class GoalManager {
                         _level = int.Parse(playerInfo);
                     }
                     else if (currentLineNumber == 1) { // line 1 (2nd line) is the player's previous score
-                        _score = int.Parse(playerInfo);
+                        _score += int.Parse(playerInfo);
                         break; // proceeds to the code below to read goals
                     }
 
