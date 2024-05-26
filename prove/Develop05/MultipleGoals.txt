@@ -1,0 +1,6 @@
+1590
+SimpleGoal~Finish HW~Finish this week's assignments on time~50~True
+EternalGoal~Exercise~Exercise for at least 30 mins~100
+ChecklistGoal~Early bed time~Go to bed before 12am~20~500~5~2~False
+SimpleGoal~Cooking a meal~Cook a nice meal tonight~100~False
+ChecklistGoal~Reading~Read 10 pages of a book~100~1000~3~3~True
