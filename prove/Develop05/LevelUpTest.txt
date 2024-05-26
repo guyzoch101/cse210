@@ -1,0 +1,4 @@
+2
+1050
+ChecklistGoal~Early bedtime~Going to bed before 12am~100~500~5~5~True
+SimpleGoal~Complete HW~Complete this week's assignments before 12am~50~True

@@ -14,7 +14,7 @@ public class ChecklistGoal : Goal {
         _target = target;
         _bonus = bonus;
         _amountCompleted = amountCompleted;
-        _isComplete = false;
+        _isComplete = status;
     }
 
     public override int RecordEvent() {
@@ -42,12 +42,13 @@ public class ChecklistGoal : Goal {
     }
 
     public override string GetDetailsString() {
-        string display = $"{_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}"; // need update on current completed number
+        string display = $"{_shortName} ({_description}) -- Currently completed: {_amountCompleted}/{_target}";
+
         return display;
     }
 
     public override string GetStringRepresentation() {
-        string display = $"ChecklistGoal~{_shortName}~{_description}~{_points}~{_bonus}~{_target}~{_amountCompleted}~{_isComplete}"; // need update on current completed number
+        string display = $"ChecklistGoal~{_shortName}~{_description}~{_points}~{_bonus}~{_target}~{_amountCompleted}~{_isComplete}";
 
         return display;
     }

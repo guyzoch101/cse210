@@ -3,9 +3,11 @@ using System.IO.Enumeration;
 public class GoalManager {
     private List<Goal> _goals = new List<Goal>();
     private int _score;
+    private int _level;
 
     public GoalManager() {
         _score = 0;
+        _level = 1;
     }
 
     public void Start() {
@@ -57,12 +59,28 @@ public class GoalManager {
                 Console.WriteLine("Invalid input. Please try again.");
             }
 
+            // check for level up
+            CheckLevel();
+            Console.WriteLine();
+
         } while(choiceMenu != "6");
     }
 
     public void DisplayPlayerInfo() {
-        // Display the points
-        Console.WriteLine($"Points: {_score}"); // points
+        // Display the user's current level and score
+        Console.WriteLine($"Level {_level} : {_score} / {_level * 1000} points"); // level : xx points
+    }
+
+    public void CheckLevel() {
+        // Level 1: 0-999 points
+        // Level 2: 1000-1999 points
+        // Level 3: 2000-2999 points
+        // etc
+
+        if (_score > _level * 1000) {
+            _level += 1;
+            Console.WriteLine($"Congratulations! You have levelled up to level {_level}.");
+        }
     }
 
     public void ListGoalNames() {
@@ -187,10 +205,36 @@ public class GoalManager {
             Console.WriteLine("Goal already completed. Choose another goal.");
         }
         else {
-            int pointsRewarded = goal.RecordEvent();
+            int multiplier = 1;
+            int roundScore = goal.RecordEvent();
+
+            if (goal.GetType() != typeof(ChecklistGoal)) { // no multiplier for ChecklistGoal
+                multiplier = PointsMultiplier();
+            }
+
+            int pointsRewarded = roundScore * multiplier; // _points * multiplier -> usually = 1
+
+            if (multiplier != 1) {
+                Console.WriteLine($"Congratulations! You have received a multiplier of {multiplier}x for the {roundScore} points.");
+                Console.WriteLine($"Total points received: {pointsRewarded}");
+            }
+
             _score += pointsRewarded;
         }
 
+    }
+
+    public int PointsMultiplier() {
+        Random random = new Random();
+
+        int multiplierDecider = random.Next(10); // generates an integer of a range from 0 to 9
+
+        int multiplier = 1;
+        if (multiplierDecider == 1) { // 10% chance to get a multiplier
+            multiplier = random.Next(2, 5); // random multiplier of a range from 2 to 4
+        }
+
+        return multiplier;
     }
 
     public void SaveGoals() {
@@ -201,6 +245,7 @@ public class GoalManager {
         string filename = Console.ReadLine();
 
         using(StreamWriter goalsFile = new StreamWriter($"{filename}.txt")) {
+            goalsFile.WriteLine(_level);
             goalsFile.WriteLine(_score);
             foreach(Goal goal in _goals) {
                 goalsFile.WriteLine(goal.GetStringRepresentation());
@@ -216,58 +261,67 @@ public class GoalManager {
         Console.Write("Enter a filename (without .txt) to retrieve goals entered previously: ");
         string filename = Console.ReadLine();
 
-        // read the first line to get _score
+        if (!File.Exists($"{filename}.txt")) { // check if the filename entered existed
+            Console.WriteLine("Filename entered does not exist.");
+        }
+        else {
+            using (StreamReader reader = new StreamReader($"{filename}.txt")) {
+                string playerInfo;
+                int currentLineNumber = 0;
 
-        using (StreamReader reader = new StreamReader($"{filename}.txt")) {
-            string points;
-            int currentLineNumber = 0;
-            int lineNumber = 0;
+                while ((playerInfo = reader.ReadLine()) != null) {
+                    if (currentLineNumber == 0) { // line 0 (1st line) is the player's level
+                        _level = int.Parse(playerInfo);
+                    }
+                    else if (currentLineNumber == 1) { // line 1 (2nd line) is the player's previous score
+                        _score = int.Parse(playerInfo);
+                        break; // proceeds to the code below to read goals
+                    }
 
-            while ((points = reader.ReadLine()) != null) {
-                if (currentLineNumber == lineNumber) {
-                    _score = int.Parse(points);
-                    break;
+                    currentLineNumber += 1;
                 }
             }
-        }
 
-        string[] lines = System.IO.File.ReadAllLines($"{filename}.txt");
+            string[] lines = System.IO.File.ReadAllLines($"{filename}.txt");
 
-        foreach (string line in lines) {
-            string[] parts = line.Split("~");
+            foreach (string line in lines) {
+                string[] parts = line.Split("~");
+                // not needing code to skip the first 2 lines, since parts[0] of the first 2 lines do not satisfy the conditions below
 
-            // parts[0] = goal type
-            // parts[1] = _shortName
-            // parts[2] = _description
-            // parts[3] = _points -> converted to int
+                // parts[0] = goal type
+                // parts[1] = _shortName
+                // parts[2] = _description
+                // parts[3] = _points -> converted to int
 
-            if (parts[0] == "SimpleGoal") {
-                // parts[4] = _isComplete (status)
-                bool.TryParse(parts[4], out bool status);
-                SimpleGoal goalLoading = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), status);
+                if (parts[0] == "SimpleGoal") { // loading SimpleGoal
+                    // parts[4] = _isComplete (status)
+                    bool.TryParse(parts[4], out bool status);
+                    SimpleGoal goalLoading = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), status);
 
-                // add to list
-                _goals.Add(goalLoading);
-            }
+                    // add to list
+                    _goals.Add(goalLoading);
+                }
 
-            else if (parts[0] == "EternalGoal") {
-                EternalGoal goalLoading = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                else if (parts[0] == "EternalGoal") { // loading EternalGoal
+                    EternalGoal goalLoading = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
 
-                // no status for EternalGoal -> will remain uncompleted even when completed
+                    // no status for EternalGoal -> will remain uncompleted even when completed
 
-                // add to list
-                _goals.Add(goalLoading);
-            }
+                    // add to list
+                    _goals.Add(goalLoading);
+                }
 
-            else if (parts[0] == "ChecklistGoal") {
-                // parts[4] = _bonus
-                // parts[5] = _target
-                // parts[6] = _amountCompleted
-                // parts[7] = _isComplete
-                bool.TryParse(parts[7], out bool status);
-                ChecklistGoal goalLoading = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]), int.Parse(parts[4]), int.Parse(parts[6]), status);
-
-                _goals.Add(goalLoading);
+                else if (parts[0] == "ChecklistGoal") { // loading ChecklistGoal
+                    // parts[4] = _bonus
+                    // parts[5] = _target
+                    // parts[6] = _amountCompleted
+                    // parts[7] = _isComplete
+                    bool.TryParse(parts[7], out bool status);
+                    ChecklistGoal goalLoading = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]), int.Parse(parts[4]), int.Parse(parts[6]), status);
+                    
+                    // add to list
+                    _goals.Add(goalLoading);
+                }
             }
         }
     }

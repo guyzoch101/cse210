@@ -1,3 +1,4 @@
+2
 1640
 SimpleGoal~Taking out the rubbish~Take out the rubbish before going to bed tonight~10~True
 SimpleGoal~Finish HW~Finish this week's assignments on time~50~True
