@@ -6,14 +6,14 @@ public class ChecklistGoal : Goal {
     private int _bonus;
     private bool _isComplete;
 
-    public ChecklistGoal(string name, string description, int points, int target, int bonus, bool status)
+    public ChecklistGoal(string name, string description, int points, int target, int bonus, int amountCompleted, bool status)
         : base(name, description, points) {
         _shortName = name;
         _description = description;
         _points = points;
         _target = target;
         _bonus = bonus;
-        _amountCompleted = 0;
+        _amountCompleted = amountCompleted;
         _isComplete = false;
     }
 

@@ -155,7 +155,7 @@ public class GoalManager {
             string bonusString = Console.ReadLine();
             int bonusInt = int.Parse(bonusString);
 
-            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, pointsInt, targetInt, bonusInt, false);
+            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, pointsInt, targetInt, bonusInt, 0, false);
             
             _goals.Add(checklistGoal);
         }
@@ -265,7 +265,7 @@ public class GoalManager {
                 // parts[6] = _amountCompleted
                 // parts[7] = _isComplete
                 bool.TryParse(parts[7], out bool status);
-                ChecklistGoal goalLoading = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]), status);
+                ChecklistGoal goalLoading = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]), int.Parse(parts[4]), int.Parse(parts[6]), status);
 
                 _goals.Add(goalLoading);
             }
