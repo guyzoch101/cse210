@@ -250,8 +250,10 @@ public class GoalManager {
         string filename = Console.ReadLine();
 
         using(StreamWriter goalsFile = new StreamWriter($"{filename}.txt")) {
-            goalsFile.WriteLine(_level);
-            goalsFile.WriteLine(_score);
+            goalsFile.WriteLine(_level); // writes the user's current level on the 1st line
+            goalsFile.WriteLine(_score); // writes the user's current socre on the 2nd line
+
+            // loops through the _goals list and writes all the details on each line of the text file
             foreach(Goal goal in _goals) {
                 goalsFile.WriteLine(goal.GetStringRepresentation());
             }
@@ -270,6 +272,9 @@ public class GoalManager {
             Console.WriteLine("Filename entered does not exist.");
         }
         else {
+            // used for reading the first 2 lines of the text file
+            // 1st line: player level
+            // 2nd line: player score recorded
             using (StreamReader reader = new StreamReader($"{filename}.txt")) {
                 string playerInfo;
                 int currentLineNumber = 0;
