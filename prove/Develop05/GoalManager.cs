@@ -81,8 +81,9 @@ public class GoalManager {
             // _level += 1 will only level up for 1 level
             // but loading multiple files may cause the level to rise for more than 1 in one round
 
-            // if _score = 2500 -> will return 2.5 and round down to the nearest int which is 2
-            _level = (int)Math.Floor((double)_score / 1000);
+            // if _score = 2500 -> will return 2.5 and round up to the nearest int which is 3
+            // since 2500 points is level 3
+            _level = (int)Math.Ceiling((double)_score / 1000);
             Console.WriteLine($"Congratulations! You have levelled up to level {_level}.");
         }
     }
