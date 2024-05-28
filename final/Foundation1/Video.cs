@@ -15,6 +15,10 @@ public class Video {
         return noOfComments;
     }
 
+    public void AddToCommentList(Comment comment) {
+        _comments.Add(comment);
+    }
+
     public void DisplayVideoDetails() {
         string videoDetails = $"Title: {_title} ~ Author: {_author} ~ Length: {_lengthSec} seconds";
         Console.WriteLine(videoDetails);
