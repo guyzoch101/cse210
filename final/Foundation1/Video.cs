@@ -20,21 +20,22 @@ public class Video {
         int sec = _lengthSec % 60;
         string length = $"{min}:{sec}";
         
-        return length;
+        return length; // returns the string in the form of mm:ss
     }
 
     public void AddToCommentList(Comment comment) {
-        _comments.Add(comment);
+        _comments.Add(comment); // adds a comment into _comments
     }
 
     public void DisplayVideoDetails() {
-        string videoDetails = $"{_title} ~ {_author} ({LengthMinSec()})";
+        string videoDetails = $"{_title} ~ {_author} ({LengthMinSec()})"; // title, author, video length
         Console.WriteLine(videoDetails);
-    }
 
-    public void DisplayAllComments() {
+        Console.WriteLine($"Comments ({GetNumberOfComments()})"); // number of comments
         foreach (Comment comment in _comments) {
-            comment.DisplayCommentDetails();
+            comment.DisplayCommentDetails(); // iterates _comments -> display all comments associated with the video
         }
+
+        Console.WriteLine();
     }
 }
