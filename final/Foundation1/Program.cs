@@ -20,6 +20,7 @@ class Program
 
         _videos.Add(video1); // adding video to list
 
-        
+        video1.DisplayVideoDetails();
+        video1.DisplayAllComments();
     }
 }

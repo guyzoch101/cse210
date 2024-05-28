@@ -23,4 +23,10 @@ public class Video {
         string videoDetails = $"Title: {_title} ~ Author: {_author} ~ Length: {_lengthSec} seconds";
         Console.WriteLine(videoDetails);
     }
+
+    public void DisplayAllComments() {
+        foreach (Comment comment in _comments) {
+            comment.DisplayCommentDetails();
+        }
+    }
 }
