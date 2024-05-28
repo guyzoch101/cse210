@@ -20,7 +20,25 @@ class Program
 
         _videos.Add(video1); // adding video to list
 
-        video1.DisplayVideoDetails();
-        video1.DisplayAllComments();
+        // video2
+        Video video2 = new Video("How to Eat Healthier?", "Healthy Life", 500);
+
+        // comments associated with video2
+        Comment comment2a = new Comment("Mom at Rexburg", "Looks like it's gonna be a healthy dinner for my kids tonight.");
+        video2.AddToCommentList(comment2a); // adding comment to list
+        Comment comment2b = new Comment("Gym Rat", "New diet for me!");
+        video2.AddToCommentList(comment2b); // adding comment to list
+        Comment comment2c = new Comment("Tristan", "Good for keeping fit.");
+        video2.AddToCommentList(comment2c); // adding comment to list
+
+        _videos.Add(video2);
+
+        foreach(Video video in _videos) {
+            video.DisplayVideoDetails(); // title, author, video length
+            Console.WriteLine($"Comments ({video.GetNumberOfComments()})"); // number of comments
+            video.DisplayAllComments(); // all comments
+
+            Console.WriteLine();
+        }
     }
 }

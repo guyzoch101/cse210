@@ -15,12 +15,20 @@ public class Video {
         return noOfComments;
     }
 
+    public string LengthMinSec() {
+        int min = (int)Math.Floor((double)_lengthSec / 60);
+        int sec = _lengthSec % 60;
+        string length = $"{min}:{sec}";
+        
+        return length;
+    }
+
     public void AddToCommentList(Comment comment) {
         _comments.Add(comment);
     }
 
     public void DisplayVideoDetails() {
-        string videoDetails = $"Title: {_title} ~ Author: {_author} ~ Length: {_lengthSec} seconds";
+        string videoDetails = $"{_title} ~ {_author} ({LengthMinSec()})";
         Console.WriteLine(videoDetails);
     }
 

@@ -8,7 +8,7 @@ public class Comment {
     }
 
     public void DisplayCommentDetails() {
-        string commentDetails = $"{_commentText} ~ by {_name}";
+        string commentDetails = $"> {_commentText} ~ by {_name}";
         Console.WriteLine(commentDetails);
     }
 }
