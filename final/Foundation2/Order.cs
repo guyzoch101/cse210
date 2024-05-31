@@ -10,19 +10,23 @@ public class Order {
         _destination = destination;
     }
 
+    public void AddToProductList(Product product) {
+        _products.Add(product);
+    }
+
     public double GetTotalPrice() {
         foreach (Product product in _products) {
             _totalPrice += product.GetPriceForProduct();
         }
 
         _totalPrice += GetShippingCost();
-        
+
         return _totalPrice;
     }
 
     public void DisplayPackingLabel() {
         string packingLabel = $@"Packing Label
-        ==============================";
+==============================";
         Console.WriteLine(packingLabel);
 
         foreach (Product product in _products) {
@@ -33,9 +37,9 @@ public class Order {
 
     public string GetShippingLabel() {
         string shippingLabel = $@"Shipping Label
-        ==============================
-        {_customerName}
-        {_destination.GetFullAddress()}";
+==============================
+{_customerName}
+{_destination.GetFullAddress()}";
 
         return shippingLabel;
     }
@@ -44,10 +48,10 @@ public class Order {
         int shippingCost;
 
         if (_destination.IsUSA()) {
-            shippingCost = 35;
+            shippingCost = 5;
         }
         else {
-            shippingCost = 5;
+            shippingCost = 35;
         }
 
         return shippingCost;

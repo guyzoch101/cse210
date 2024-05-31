@@ -7,6 +7,10 @@ public class Customer {
         _address = address;
     }
 
+    public string GetCustomerName() {
+        return _name;
+    }
+
     public bool IsUSA() {
         if (_address.IsUSA()) {
             return true;

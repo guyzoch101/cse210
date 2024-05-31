@@ -22,8 +22,8 @@ public class Address {
 
     public string GetFullAddress() {
         string fullAddress = $@"{_streetAddress}
-        {_city}, {_stateProvince}, {_country}";
-        
+{_city}, {_stateProvince}, {_country}";
+
         return fullAddress;
     }
 }
