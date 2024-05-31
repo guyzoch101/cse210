@@ -6,22 +6,50 @@ public class Order {
 
     public Order(string customerName, Address destination) {
         _customerName = customerName;
+        _totalPrice = 0;
         _destination = destination;
     }
 
     public double GetTotalPrice() {
-        return 0;
+        foreach (Product product in _products) {
+            _totalPrice += product.GetPriceForProduct();
+        }
+
+        _totalPrice += GetShippingCost();
+        
+        return _totalPrice;
     }
 
-    public string GetPackingLabel() {
-        return "";
+    public void DisplayPackingLabel() {
+        string packingLabel = $@"Packing Label
+        ==============================";
+        Console.WriteLine(packingLabel);
+
+        foreach (Product product in _products) {
+            string productDetails = product.GetProductDetails();
+            Console.WriteLine(productDetails);
+        }
     }
 
     public string GetShippingLabel() {
-        return "";
+        string shippingLabel = $@"Shipping Label
+        ==============================
+        {_customerName}
+        {_destination.GetFullAddress()}";
+
+        return shippingLabel;
     }
 
     public int GetShippingCost() {
-        return 0;
+        int shippingCost;
+
+        if (_destination.IsUSA()) {
+            shippingCost = 35;
+        }
+        else {
+            shippingCost = 5;
+        }
+
+        return shippingCost;
     }
 }

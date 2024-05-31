@@ -8,6 +8,11 @@ public class Customer {
     }
 
     public bool IsUSA() {
-        return true;
+        if (_address.IsUSA()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

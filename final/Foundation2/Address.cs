@@ -12,10 +12,18 @@ public class Address {
     }
 
     public bool IsUSA() {
-        return true;
+        if (_country == "USA") {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public string GetFullAddress() {
-        return "";
+        string fullAddress = $@"{_streetAddress}
+        {_city}, {_stateProvince}, {_country}";
+        
+        return fullAddress;
     }
 }
