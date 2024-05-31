@@ -35,7 +35,7 @@ class Program
         order2.AddToProductList(product2a); // add to products list in Order
         Product product2b = new Product("Pencil", "A22", 0.49, 10);
         order2.AddToProductList(product2b); // add to products list in Order
-        Product product2c = new Product("Rubber", "A26", 0.19, 2);
+        Product product2c = new Product("Rubber", "A26", 0.14, 2);
         order2.AddToProductList(product2c); // add to products list in Order
 
         Console.WriteLine($"Order2 Total Cost: ${order2.GetTotalPrice()}");
