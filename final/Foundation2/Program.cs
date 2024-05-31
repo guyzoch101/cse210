@@ -6,7 +6,7 @@ class Program
     {
         // order 1
         Address address1 = new Address("256 Main Street", "Rexburg", "ID", "USA");
-        Customer customer1 = new Customer("Tristan", address1);
+        Customer customer1 = new Customer("Harry", address1);
         Order order1 = new Order(customer1.GetCustomerName(), address1);
 
         // products for order 1
