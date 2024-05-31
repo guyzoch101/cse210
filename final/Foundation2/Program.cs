@@ -31,11 +31,11 @@ class Program
         Order order2 = new Order(customer2.GetCustomerName(), address2);
 
         // products for order 2
-        Product product2a = new Product("Highlighter", "A47", 1.98, 2);
+        Product product2a = new Product("Highlighter", "A47", 2.04, 2);
         order2.AddToProductList(product2a); // add to products list in Order
-        Product product2b = new Product("Pencil", "A22", 0.49, 10);
+        Product product2b = new Product("Pencil", "A22", 0.79, 10);
         order2.AddToProductList(product2b); // add to products list in Order
-        Product product2c = new Product("Rubber", "A26", 0.14, 2);
+        Product product2c = new Product("Rubber", "A26", 0.49, 2);
         order2.AddToProductList(product2c); // add to products list in Order
 
         Console.WriteLine($"Order2 Total Cost: ${order2.GetTotalPrice()}");
