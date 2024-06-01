@@ -15,7 +15,7 @@ class Program
         Console.WriteLine();
         Console.WriteLine(lecture.GetShortDescription(lecture.GetType().ToString()));
 
-        Console.WriteLine();
+        DisplayLineSkipper();
 
         // Reception Event
         Address addressReception = new Address("421 Wembley Street", "London", "England", "UK");
@@ -28,7 +28,7 @@ class Program
         Console.WriteLine();
         Console.WriteLine(reception.GetShortDescription(reception.GetType().ToString()));
 
-        Console.WriteLine();
+        DisplayLineSkipper();
 
         // Outdoor Gathering Event
         Address addressOutdoorGathering = new Address("25 W 3rd N", "Salt Lake City", "Utah", "USA");
@@ -40,5 +40,11 @@ class Program
         outdoorGathering.DisplayFullDetails();
         Console.WriteLine();
         Console.WriteLine(outdoorGathering.GetShortDescription(outdoorGathering.GetType().ToString()));
+
+        DisplayLineSkipper();
+    }
+
+    static void DisplayLineSkipper() {
+        Console.WriteLine("==============================");
     }
 }
