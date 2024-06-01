@@ -13,11 +13,15 @@ public class Event {
         _address = address;
     }
 
-    public string GetStandardDetails() { // title, description, date, time, address
-        return "";
+    public void DisplayStandardDetails() { // title, description, date, time, address
+        Console.WriteLine($"{_eventTitle} - {_description}");
+        Console.WriteLine($"{_date} @ {_time}");
+        Console.WriteLine(_address.GetFullAddress());
     }
 
-    public string GetShortDescription() { // event, title, date
-        return "";
+    public string GetShortDescription(string eventType) { // event, title, date
+        string shortDescription = $"{eventType} - {_description} - {_date}";
+        
+        return shortDescription;
     }
 }
