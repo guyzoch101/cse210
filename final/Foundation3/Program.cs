@@ -27,5 +27,18 @@ class Program
         reception.DisplayFullDetails();
         Console.WriteLine();
         Console.WriteLine(reception.GetShortDescription(reception.GetType().ToString()));
+
+        Console.WriteLine();
+
+        // Outdoor Gathering Event
+        Address addressOutdoorGathering = new Address("25 W 3rd N", "Salt Lake City", "Utah", "USA");
+        OutdoorGathering outdoorGathering = new OutdoorGathering("Independence Day Party", "Fireworks and Party Games", "7/4/2024", "17:30", addressOutdoorGathering, "Sunny and Clear");
+
+        // Display Details
+        outdoorGathering.DisplayStandardDetails();
+        Console.WriteLine();
+        outdoorGathering.DisplayFullDetails();
+        Console.WriteLine();
+        Console.WriteLine(outdoorGathering.GetShortDescription(outdoorGathering.GetType().ToString()));
     }
 }
